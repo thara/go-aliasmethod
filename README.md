@@ -22,7 +22,7 @@ import "github.com/tomochikahara/go-aliasmethod/aliasmethod"
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENSE)
+[MIT](https://github.com/tomochikahara/go-aliasmethod/blob/master/LICENSE)
 
 ## Author
 
