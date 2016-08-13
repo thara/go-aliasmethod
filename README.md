@@ -9,7 +9,9 @@ Go 1.6.2
 
 ## Install
 
+```
 go get github.com/tomochikahara/go-aliasmethod
+```
 
 ## Usage
 
