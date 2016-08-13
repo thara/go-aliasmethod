@@ -2,6 +2,7 @@ go-aliasmethod
 ====
 
 Implementation of [Walker's Alias method](https://en.wikipedia.org/wiki/Alias_method) by Go
+[![Build Status](https://travis-ci.org/tomochikahara/go-aliasmethod.svg?branch=master)](https://travis-ci.org/tomochikahara/go-aliasmethod)
 
 ## Requirement
 
