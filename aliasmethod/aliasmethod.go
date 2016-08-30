@@ -4,7 +4,28 @@ import (
 	"errors"
 	"fmt"
 	"math/rand"
+	"time"
 )
+
+type AliasMethod struct {
+	rand *rand.Rand
+}
+
+func NewAliasMethod() *AliasMethod {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	return &AliasMethod{rand: r}
+}
+
+func (self *AliasMethod) Random(table *AliasTable) int {
+	u := self.rand.Float64()
+	n := self.rand.Intn(table.Len)
+
+	if u <= table.Prob[n] {
+		return int(n)
+	} else {
+		return table.Alias[n]
+	}
+}
 
 type AliasTable struct {
 	Len   int
@@ -12,7 +33,7 @@ type AliasTable struct {
 	Alias []int
 }
 
-func GenAliasTable(weights []int) (*AliasTable, error) {
+func NewAliasTable(weights []int) (*AliasTable, error) {
 	n := len(weights)
 
 	sum := 0
@@ -65,15 +86,4 @@ func GenAliasTable(weights []int) (*AliasTable, error) {
 	}
 
 	return &AliasTable{Len: n, Prob: prob, Alias: a}, nil
-}
-
-func (table *AliasTable) Random() int {
-	u := rand.Float64()
-	n := rand.Intn(table.Len)
-
-	if u <= table.Prob[n] {
-		return int(n)
-	} else {
-		return table.Alias[n]
-	}
 }

@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestGenAliasTable(t *testing.T) {
+func TestNewAliasTable(t *testing.T) {
 
 	var params = []struct {
 		weights []int
@@ -19,7 +19,7 @@ func TestGenAliasTable(t *testing.T) {
 
 	for _, p := range params {
 		sample_weights := p.weights
-		actual, err := GenAliasTable(sample_weights)
+		actual, err := NewAliasTable(sample_weights)
 
 		if err != nil {
 			t.Fatal(err)
@@ -51,13 +51,14 @@ func TestProbability(t *testing.T) {
 	}
 
 	for param_no, param := range params {
-		alias, _ := GenAliasTable(param.weights)
+		table, _ := NewAliasTable(param.weights)
 
 		sample := 1000000.0
 		results := map[int]int{}
 
+		a := NewAliasMethod()
 		for i := 0.0; i < sample; i++ {
-			r := alias.Random()
+			r := a.Random(table)
 			results[r] += 1
 		}
 
