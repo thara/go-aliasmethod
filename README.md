@@ -17,7 +17,7 @@ go get github.com/tomochikahara/go-aliasmethod
 ## Usage
 
 ```go
-import "github.com/tomochikahara/go-aliasmethod/aliasmethod"
+import "github.com/tomochikahara/go-aliasmethod"
 ```
 
 ## Licence
